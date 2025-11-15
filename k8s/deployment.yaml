@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbon-footprint-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carbon-footprint
+  template:
+    metadata:
+      labels:
+        app: carbon-footprint
+    spec:
+      containers:
+        - name: carbon-footprint
+          image: carbon-footprint-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
